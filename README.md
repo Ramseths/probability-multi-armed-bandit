@@ -11,7 +11,7 @@ Es una implementación del algoritmo de bandidos multi-brazo (Multi-Armed Bandit
 2. **Ejecución de Episodios**: Durante un número predefinido de episodios, se selecciona un bandido basado en la estrategia Epsilon-Greedy.
 3. **Actualización de Valores**: Después de cada episodio, se actualiza el valor esperado de recompensa del bandido seleccionado.
 
-   \[ Q_{k+1}(a) = Q_{k}(a) + \frac{1}{k + 1}(r_{k+1} - Q_{k}(a)) \]
+   \[Q_{k+1}(a) = Q_{k}(a) + \frac{1}{k + 1}(r_{k+1} - Q_{k}(a))\]
 
     Donde:
    - `Q_{k+1}(a)` es el nuevo valor esperado de recompensa para la acción `a`.
