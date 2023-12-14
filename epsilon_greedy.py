@@ -41,13 +41,39 @@ class MultiArmedBandit:
 
     def run(self):
         for i in range(EPISODES):
-            bandit = self.bandits[self.select_bandit()]
+            bandit = self.bandits[self.get_bandit()]
             reward = bandit.get_reward()
             self.update(bandit, reward)
 
             print(f'Episode {i}, bandit {bandit.probability}: Q-value {bandit.q}')
 
+    def get_bandit(self):
+        # Epsilon Greedy Strategy
+
+        if random() < EPSILON:
+            # Exploration
+            bandit_index = randint(0, BANDITS - 1)
+        else:
+            # Exploitation
+            bandit_index = self.max_q_bandit()
+
+        return bandit_index
     
+    def update(self, bandit, reward):
+        bandit.k = bandit.k + 1
+        bandit.q = bandit.q + (1 / (1 + bandit.k)) * (reward - bandit.q)
+
+    def max_q_bandit(self):
+        # Bandit with max Q(a) value (Exploitation)
+        bandit_index = 0
+        max_q = self.bandits[bandit_index].q
+
+        for i in range(1, BANDITS):
+            if self.bandits[i].q > max_q:
+                max_q = self.bandits[i].q
+                bandit_index = i
+
+        return bandit_index
 
 
 
