@@ -80,5 +80,8 @@ class MultiArmedBandit:
 
         return bandit_index
 
-
+if __name__ == '__main__':
+    e_greedy = MultiArmedBandit()
+    e_greedy.run()
+    e_greedy.stats()
 
