@@ -59,6 +59,11 @@ class MultiArmedBandit:
 
         return bandit_index
     
+    def stats(self):
+        # Shows how many times the Bandit has been selected
+        for i in range(BANDITS):
+            print(f'Bandit {i} with k {self.bandits[i].k}')
+    
     def update(self, bandit, reward):
         bandit.k = bandit.k + 1
         bandit.q = bandit.q + (1 / (1 + bandit.k)) * (reward - bandit.q)
