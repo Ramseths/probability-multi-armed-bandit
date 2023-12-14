@@ -29,6 +29,25 @@ class Bandit:
         else:
             return 0
     
+class MultiArmedBandit:
+    def __init__(self):
+        self.bandits = []
+        # Exploration 50%
+        self.bandits.append(Bandit(0.5))
+        # Exploration 60%
+        self.bandits.append(Bandit(0.6))
+        # Exploration 40%
+        self.bandits.append(Bandit(0.4))
+
+    def run(self):
+        for i in range(EPISODES):
+            bandit = self.bandits[self.select_bandit()]
+            reward = bandit.get_reward()
+            self.update(bandit, reward)
+
+            print(f'Episode {i}, bandit {bandit.probability}: Q-value {bandit.q}')
+
+    
 
 
 
