@@ -32,8 +32,8 @@ class Bandit:
 class MultiArmedBandit:
     def __init__(self):
         self.bandits = []
-        # Exploration 50%
-        self.bandits.append(Bandit(0.5))
+        # Exploration 80%
+        self.bandits.append(Bandit(0.8))
         # Exploration 60%
         self.bandits.append(Bandit(0.6))
         # Exploration 40%
